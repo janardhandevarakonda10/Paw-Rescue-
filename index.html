@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#e85d9e" />
+  <meta name="description" content="PawRescue connects people with street-animal rescue, medical care, shelter, and adoption support." />
+  <title>PawRescue — Every life deserves a second chance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main id="authView" class="auth-view">
+    <section class="auth-visual" aria-label="PawRescue mission">
+      <a class="brand brand-light" href="#signin" aria-label="PawRescue home"><span class="brand-mark">♥</span><span>Paw<span>Rescue</span></span></a>
+      <div class="visual-copy">
+        <span class="eyebrow">A LITTLE CARE CHANGES EVERYTHING</span>
+        <h1>Every life deserves<br />a second chance.</h1>
+        <p>Be the reason a street animal finds safety, care, and a place to call home.</p>
+        <div class="auth-photo-credit">Rescue starts with compassion <span>✦</span></div>
+      </div>
+      <div class="visual-orb orb-one"></div><div class="visual-orb orb-two"></div>
+    </section>
+    <section class="auth-panel">
+      <a class="brand brand-mobile" href="#signin"><span class="brand-mark">♥</span><span>Paw<span>Rescue</span></span></a>
+      <div class="auth-card">
+        <div class="auth-intro"><span class="eyebrow pink-text">YOUR KINDNESS MATTERS</span><h2 id="authTitle">Welcome back</h2><p id="authSubtitle">Sign in to continue making a difference.</p></div>
+        <form id="signinForm" class="auth-form">
+          <label for="signinEmail">Email address</label><input id="signinEmail" type="email" autocomplete="email" placeholder="you@example.com" required />
+          <label for="signinPassword">Password</label>
+          <div class="password-wrap"><input id="signinPassword" type="password" autocomplete="current-password" placeholder="Enter your password" required /><button class="password-toggle" type="button" data-toggle-password="signinPassword" aria-label="Show password">Show</button></div>
+          <div class="auth-options"><label class="check-label"><input id="rememberMe" type="checkbox" /> Remember me</label><button type="button" class="text-button" id="forgotPassword">Forgot password?</button></div>
+          <button class="button button-primary full-button" type="submit">Sign in <span aria-hidden="true">→</span></button>
+          <p class="auth-switch">New to PawRescue? <button type="button" class="text-button" data-auth-switch="signup">Create an account</button></p>
+        </form>
+        <form id="signupForm" class="auth-form hidden" novalidate>
+          <label for="signupName">Full name</label><input id="signupName" type="text" autocomplete="name" placeholder="Your full name" required />
+          <label for="signupEmail">Email address</label><input id="signupEmail" type="email" autocomplete="email" placeholder="you@example.com" required />
+          <label for="signupMobile">Mobile number</label><input id="signupMobile" type="tel" autocomplete="tel" placeholder="e.g. +91 98765 43210" required />
+          <label for="signupPassword">Password</label><div class="password-wrap"><input id="signupPassword" type="password" autocomplete="new-password" minlength="6" placeholder="At least 6 characters" required /><button class="password-toggle" type="button" data-toggle-password="signupPassword" aria-label="Show password">Show</button></div>
+          <label for="signupConfirm">Confirm password</label><input id="signupConfirm" type="password" autocomplete="new-password" placeholder="Enter your password again" required />
+          <label class="check-label terms-label"><input id="termsAgree" type="checkbox" required /> I agree to the terms and privacy policy.</label>
+          <button class="button button-primary full-button" type="submit">Create account <span aria-hidden="true">→</span></button>
+          <p class="auth-switch">Already have an account? <button type="button" class="text-button" data-auth-switch="signin">Sign in</button></p>
+        </form>
+        <div id="authMessage" class="form-message" role="status" aria-live="polite"></div>
+        <p class="demo-note"><span>🔒</span> Demo prototype: sign-in is simulated and stored only in this browser. A secure backend is required for production.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="appView" class="app-shell hidden">
+    <aside id="sidebar" class="sidebar">
+      <a class="brand sidebar-brand" href="#home" aria-label="PawRescue dashboard"><span class="brand-mark">♥</span><span>Paw<span>Rescue</span></span></a>
+      <div class="nav-caption">MENU</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-section="home"><span class="nav-icon">⌂</span>Dashboard</button>
+        <button class="nav-link" data-section="emergency"><span class="nav-icon">✚</span>Emergency rescue<span class="nav-alert"></span></button>
+        <button class="nav-link" data-section="medical"><span class="nav-icon">♡</span>Medical treatment</button>
+        <button class="nav-link" data-section="shelter"><span class="nav-icon">⌂</span>Animal shelter</button>
+        <button class="nav-link" data-section="adoption"><span class="nav-icon">♧</span>Adoption</button>
+        <button class="nav-link" data-section="requests"><span class="nav-icon">▤</span>My rescue requests<span id="requestNavCount" class="nav-count hidden">0</span></button>
+      </nav>
+      <div class="sidebar-help"><div class="help-icon">✿</div><strong>Need a helping hand?</strong><p>Every small act can change an animal's life.</p><button class="text-button" data-go="emergency">Report an animal <span>→</span></button></div>
+      <div class="sidebar-profile"><button id="sidebarProfileButton" class="profile-trigger" type="button" aria-label="View and edit profile"><span id="sidebarAvatar" class="avatar">P</span><span class="profile-copy"><strong id="sidebarUserName">PawRescue friend</strong><span>Community member</span></span></button><button id="logoutButton" class="logout-button" title="Log out" aria-label="Log out">Log out</button></div>
+    </aside>
+
+    <div class="app-main">
+      <header class="topbar">
+        <button id="menuToggle" class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+        <div class="breadcrumb"><span>Pages</span><span>/</span><strong id="topSectionName">Dashboard</strong></div>
+        <div class="topbar-actions">
+          <label class="global-search"><span aria-hidden="true">⌕</span><input id="globalSearch" type="search" placeholder="Search animals, requests..." aria-label="Search animals and requests" /><kbd>⌘ K</kbd></label>
+          <button id="notificationButton" class="icon-button notification-button" aria-label="Notifications">♧<i></i></button>
+          <button id="profileButton" class="top-profile" type="button" aria-label="View and edit profile"><span id="topAvatar" class="avatar avatar-small">P</span><span id="topUserName">Friend</span><span class="chevron" aria-hidden="true">⌄</span></button>
+        </div>
+      </header>
+      <div id="notificationPanel" class="notification-panel hidden"><strong>You're all caught up</strong><p>New request updates will show here.</p></div>
+
+      <main class="content-area">
+        <section class="page-section active" id="section-home" data-title="Dashboard">
+          <div class="welcome-row"><div><span class="eyebrow pink-text">MONDAY, EVERY DAY IS A CHANCE TO HELP</span><h1>Good to see you, <span id="welcomeName">friend</span> <span class="wave">✦</span></h1><p>Here's a little overview of the lives we're changing together.</p></div><button class="button button-soft" data-go="requests">My requests <span>→</span></button></div>
+          <article class="hero-card"><div class="hero-content"><span class="hero-tag">OUR MISSION, YOUR IMPACT</span><h2>Every life deserves<br />a second chance.</h2><p>One report can be the start of a new story. Help us get a vulnerable animal the care and kindness they deserve.</p><div class="hero-actions"><button class="button button-white" data-go="emergency">✚ &nbsp;Emergency rescue</button><button class="button button-outline-white" data-go="emergency">Report an animal</button></div></div><div class="hero-stamp"><span>🐾</span><small>CARE<br />CONNECT<br />CHANGE</small></div></article>
+          <div class="section-heading-row"><div><h2>Your community at a glance</h2><p>Small steps, meaningful progress.</p></div><span class="live-tag"><i></i> Community impact</span></div>
+          <div class="stats-grid">
+            <article class="stat-card"><span class="stat-icon icon-pink">♡</span><div class="stat-label">Rescue requests</div><strong id="statRequests">0</strong><small>Your reports so far</small></article>
+            <article class="stat-card"><span class="stat-icon icon-peach">✚</span><div class="stat-label">Under medical care</div><strong>18</strong><small>Receiving support</small></article>
+            <article class="stat-card"><span class="stat-icon icon-lilac">⌂</span><div class="stat-label">In safe shelter</div><strong>32</strong><small>Resting and recovering</small></article>
+            <article class="stat-card"><span class="stat-icon icon-mint">♡</span><div class="stat-label">Ready for a home</div><strong>12</strong><small>Waiting to meet you</small></article>
+          </div>
+          <div class="home-lower-grid"><article class="surface-card activity-card"><div class="card-heading"><div><h3>Recent rescue activity</h3><p>A little good happening nearby</p></div><button class="text-button" data-go="medical">See all <span>→</span></button></div><div class="activity-item"><span class="activity-avatar">🐶</span><div><strong>Buddy is feeling brighter</strong><p>Now resting after a check-up · 24 min ago</p></div><span class="status-pill status-recovering">Recovering</span></div><div class="activity-item"><span class="activity-avatar pink-bg">🐱</span><div><strong>A new friend found shelter</strong><p>Safe, warm, and getting lots of care · 2 hrs ago</p></div><span class="status-pill status-care">In care</span></div><div class="activity-item"><span class="activity-avatar yellow-bg">🐕</span><div><strong>Maple is ready to meet a family</strong><p>Her next chapter could start with you · Yesterday</p></div><button class="text-button mini-link" data-go="adoption">Meet Maple</button></div></article><article class="announcement-card"><span class="announcement-icon">✿</span><span class="eyebrow">A NOTE FROM OUR TEAM</span><h3>Kindness travels further together.</h3><p>When you report an animal, clear details and a safe location help local caregivers understand what support may be needed.</p><button class="text-button" data-go="emergency">How to report safely <span>→</span></button></article></div>
+        </section>
+
+        <section class="page-section" id="section-emergency" data-title="Emergency rescue">
+          <div class="page-intro"><span class="eyebrow pink-text">WE'RE HERE TO HELP</span><h1>Report an animal</h1><p>Share what you've seen. Your details help the community understand how to respond.</p></div>
+          <div class="emergency-notice"><span class="notice-symbol">!</span><div><strong>Is an animal in immediate danger?</strong><p>Submitting this form does not replace contacting local emergency veterinary or animal rescue services directly. PawRescue is a demonstration platform and does not dispatch rescuers.</p></div></div>
+          <div class="form-layout"><form id="rescueForm" class="surface-card rescue-form" novalidate>
+            <div class="form-title"><span class="step-badge">01</span><div><h2>Rescue request details</h2><p>Fields marked <b>*</b> are required.</p></div></div>
+            <div class="form-grid"><div class="field"><label for="rescueName">Your full name <b>*</b></label><input id="rescueName" name="name" type="text" placeholder="e.g. Ananya Sharma" required /></div>
+              <div class="field"><label for="rescuePhone">Mobile number <b>*</b></label><input id="rescuePhone" name="phone" type="tel" placeholder="e.g. +91 98765 43210" required /><small>Include your country code if possible.</small></div>
+              <div class="field"><label for="rescueEmail">Email address <b>*</b></label><input id="rescueEmail" name="email" type="email" placeholder="you@example.com" required /></div>
+              <div class="field"><label for="animalType">Animal type <b>*</b></label><textarea id="animalType" name="animalType" rows="2" placeholder="Indie dog, community cat, pup, kitten, cow..." required></textarea></div>
+              <div class="field"><label for="animalCondition">Animal condition <b>*</b></label><select id="animalCondition" name="condition" required><option value="">Choose a condition</option><option>Injured</option><option>Abandoned</option><option>Lost</option><option>Sick</option><option>Needs Shelter</option></select></div>
+              <div class="field"><label for="animalLocation">Animal location <b>*</b></label><div class="input-with-button"><input id="animalLocation" name="location" type="text" placeholder="e.g. MG Road, Bengaluru, Karnataka" required /><button id="detectLocation" class="location-button" type="button" title="Use your location" aria-label="Detect my location">⌖</button></div><small id="locationHelp">Add a nearby Indian city, area, street, or landmark if known.</small></div>
+              <fieldset class="field urgency-field"><legend>Urgency level <b>*</b></legend><div class="urgency-options"><label class="urgency-option urgency-high"><input type="radio" name="urgency" value="High" required /><span><i></i> High</span></label><label class="urgency-option"><input type="radio" name="urgency" value="Medium" /><span><i></i> Medium</span></label><label class="urgency-option"><input type="radio" name="urgency" value="Low" /><span><i></i> Low</span></label></div></fieldset>
+              <div class="field field-full"><label for="rescueDescription">Additional description <b>*</b></label><textarea id="rescueDescription" name="description" rows="4" placeholder="Describe what happened, visible injuries, and anything that may help responders..." required></textarea></div>
+              <div class="field field-full"><label for="animalPhoto">Animal photo <span class="optional">Optional</span></label><div class="upload-box"><input id="animalPhoto" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" /><span class="upload-icon">↑</span><div><strong>Choose a photo to upload</strong><small>JPG, PNG, or WEBP · up to 5 MB</small></div><img id="photoPreview" class="photo-preview hidden" alt="Preview of selected animal photo" /></div></div>
+              <label class="consent-label field-full"><input id="rescueConsent" type="checkbox" required /><span>I confirm this information is accurate and agree it may be used by the rescue community to respond to this request. <b>*</b></span></label>
+            </div>
+            <div id="rescueMessage" class="form-message" role="status" aria-live="polite"></div>
+            <button id="submitRescue" class="button button-primary" type="submit">Submit rescue request <span>→</span></button>
+          </form><aside class="side-note"><div class="side-note-icon">♡</div><h3>Helpful reporting tips</h3><ul><li>Stay at a safe distance and don't put yourself at risk.</li><li>Share a clear landmark or nearby street.</li><li>Describe the animal's condition as best you can.</li><li>Never attempt treatment unless qualified.</li></ul><div class="privacy-note">🔒 Your contact details are saved only in this browser demo.</div></aside></div>
+        </section>
+
+        <section class="page-section" id="section-medical" data-title="Medical treatment">
+          <div class="page-intro"><span class="eyebrow pink-text">CARE FOR EVERY STEP</span><h1>Medical treatment</h1><p>See how compassionate veterinary support helps animals heal and find their feet again.</p></div>
+          <article class="medical-banner"><div><span class="hero-tag">RECOVERY TAKES A TEAM</span><h2>Gentle care. Brighter tomorrows.</h2><p>Rescued animals may need an assessment, treatment, rest, and time. These sample cases show common recovery stages.</p><button class="button button-white" data-go="emergency">Report an animal <span>→</span></button></div><div class="medical-emoji">＋</div></article>
+          <div class="section-heading-row"><div><h2>Care in progress</h2><p>Example treatment cases from our community.</p></div><span class="info-tag">Demonstration information</span></div>
+          <div class="animal-grid" id="medicalGrid"></div>
+          <div class="care-info-grid"><article class="surface-card care-info"><span class="stat-icon icon-pink">✚</span><h3>Veterinary assessment</h3><p>A qualified veterinary professional should assess injuries and illness. Keep animals calm and seek local expert advice.</p></article><article class="surface-card care-info"><span class="stat-icon icon-mint">♡</span><h3>Vaccination & health</h3><p>Vaccination and health details must always be confirmed by a veterinary professional; sample listings are not medical records.</p></article></div>
+        </section>
+
+        <section class="page-section" id="section-shelter" data-title="Animal shelter">
+          <div class="page-intro"><span class="eyebrow pink-text">A SAFE PLACE TO LAND</span><h1>Animal shelter & care</h1><p>Meet the animals in temporary care and learn what helps them feel safe.</p></div>
+          <div class="listing-toolbar"><label class="listing-search"><span>⌕</span><input id="shelterSearch" type="search" placeholder="Search by name or type..." aria-label="Search shelter animals" /></label><select id="shelterTypeFilter" aria-label="Filter shelter by animal type"><option value="all">All animal types</option><option value="Dog">Dogs</option><option value="Cat">Cats</option><option value="Puppy">Puppies</option></select><select id="shelterConditionFilter" aria-label="Filter shelter by condition"><option value="all">All conditions</option><option value="Recovering">Recovering</option><option value="Stable">Stable</option><option value="Needs care">Needs care</option></select></div>
+          <div class="animal-grid" id="shelterGrid"></div><div id="shelterEmpty" class="empty-state hidden"><span>🐾</span><h3>No matches just yet</h3><p>Try a different search or clear your filters.</p></div>
+          <div class="shelter-note">Shelter listings and care details shown here are illustrative demo information.</div>
+        </section>
+
+        <section class="page-section" id="section-adoption" data-title="Adoption">
+          <div class="page-intro"><span class="eyebrow pink-text">FIND YOUR NEW BEST FRIEND</span><h1>Adopt a companion</h1><p>A forever home starts with a hello. Meet animals looking for a loving family.</p></div>
+          <article class="adoption-banner"><span class="adoption-heart">♡</span><div><h2>Love has four paws.</h2><p>Thoughtful adoption helps every animal find a home that fits their needs.</p></div><span class="banner-count">12 <small>friends waiting</small></span></article>
+          <div class="listing-toolbar"><label class="listing-search"><span>⌕</span><input id="adoptionSearch" type="search" placeholder="Search by name or type..." aria-label="Search adoptable animals" /></label><select id="adoptionTypeFilter" aria-label="Filter adoption by animal type"><option value="all">All animal types</option><option value="Dog">Dogs</option><option value="Cat">Cats</option><option value="Puppy">Puppies</option></select><span class="verified-note">Health details are not confirmed unless noted.</span></div>
+          <div class="animal-grid" id="adoptionGrid"></div><div id="adoptionEmpty" class="empty-state hidden"><span>♡</span><h3>No friends found</h3><p>Try another search or animal type.</p></div>
+          <div class="adoption-footnote">All animals shown are fictional demo profiles. Adoption availability and medical information must be confirmed with a local shelter.</div>
+        </section>
+
+        <section class="page-section" id="section-requests" data-title="My rescue requests">
+          <div class="page-intro"><span class="eyebrow pink-text">YOUR REPORTS, IN ONE PLACE</span><h1>My rescue requests</h1><p>Review the requests you've submitted and see recorded status updates.</p></div>
+          <div class="request-tools"><label class="listing-search"><span>⌕</span><input id="requestSearch" type="search" placeholder="Search by request ID..." aria-label="Search by rescue request ID" /></label><select id="requestStatusFilter" aria-label="Filter requests by status"><option value="all">All statuses</option><option>Request Submitted</option><option>Under Review</option><option>Rescue Acknowledged</option><option>Animal Rescued</option><option>Medical Treatment</option><option>Case Completed</option></select><button class="button button-primary" data-go="emergency">＋ New request</button></div>
+          <div id="requestList" class="request-list"></div><div id="requestEmpty" class="empty-state hidden"><span>🐾</span><h3>No rescue requests yet</h3><p>When you submit a report, it will appear here so you can find its details.</p><button class="button button-primary" data-go="emergency">Report an animal</button></div>
+          <div class="tracking-disclaimer">Status changes appear only when they are recorded. This demo does not dispatch rescue teams or provide live emergency response.</div>
+        </section>
+        <footer class="page-footer"><span>Made with <b>♡</b> for every paw in need.</span><span>PawRescue community demo · Not an emergency service</span></footer>
+      </main>
+    </div>
+    <div id="mobileOverlay" class="mobile-overlay"></div>
+  </div>
+  <div id="detailModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-card"><button class="modal-close" type="button" aria-label="Close dialog">×</button><div id="modalContent"></div></div></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
